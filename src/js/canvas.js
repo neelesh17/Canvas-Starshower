@@ -3,13 +3,14 @@ import utils from './utils';
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
 
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+canvas.width = innerWidth ;
+canvas.height = innerHeight - 4;
 
 const mouse = {
   x: innerWidth / 2,
   y: innerHeight / 2
 }
+
 
 const colors = ['#2185C5', '#7ECEFD', '#FFF6E5', '#FF7F66'];
 
@@ -199,6 +200,21 @@ function animate() {
     stars.push(new Star(x, -100, radius , 'white'));
     randomSpawnRate = utils.randomIntFromRange(75, 200);
   }
+  c.font = "bold 60px Balsamiq Sans";
+  c.fillStyle = "white";
+  c.textAlign = "center";
+  c.textBaseline = "ideographic";
+  let ctext = "STAR SHOWER".split("").join(String.fromCharCode(8201))
+  c.fillText(ctext, canvas.width/2, canvas.height/2);
+  c.font = "40px Crimson Text";
+  c.fillText("Jul 26, 2020", canvas.width/2, canvas.height/2 + 100);
+  c.beginPath();
+  c.moveTo(canvas.width/2 - 100 , canvas.height/2 + 20);
+  c.lineTo(canvas.width/2 + 100, canvas.height/2 + 20);
+  c.strokeStyle = "rgba(255, 255, 255, 1)";
+  c.lineWidth = 2.5;
+  c.stroke();
+  c.closePath();
 }
 
 init();

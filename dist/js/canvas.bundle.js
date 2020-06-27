@@ -123,7 +123,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 var canvas = document.querySelector('canvas');
 var c = canvas.getContext('2d');
 canvas.width = innerWidth;
-canvas.height = innerHeight;
+canvas.height = innerHeight - 4;
 var mouse = {
   x: innerWidth / 2,
   y: innerHeight / 2
@@ -331,6 +331,22 @@ function animate() {
     stars.push(new Star(x, -100, radius, 'white'));
     randomSpawnRate = _utils__WEBPACK_IMPORTED_MODULE_0___default.a.randomIntFromRange(75, 200);
   }
+
+  c.font = "bold 60px Balsamiq Sans";
+  c.fillStyle = "white";
+  c.textAlign = "center";
+  c.textBaseline = "ideographic";
+  var ctext = "STAR SHOWER".split("").join(String.fromCharCode(8201));
+  c.fillText(ctext, canvas.width / 2, canvas.height / 2);
+  c.font = "40px Crimson Text";
+  c.fillText("Jul 26, 2020", canvas.width / 2, canvas.height / 2 + 100);
+  c.beginPath();
+  c.moveTo(canvas.width / 2 - 100, canvas.height / 2 + 20);
+  c.lineTo(canvas.width / 2 + 100, canvas.height / 2 + 20);
+  c.strokeStyle = "rgba(255, 255, 255, 1)";
+  c.lineWidth = 2.5;
+  c.stroke();
+  c.closePath();
 }
 
 init();
